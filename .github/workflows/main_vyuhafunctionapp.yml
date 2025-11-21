@@ -2,7 +2,7 @@
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 # More info on Python, GitHub Actions, and Azure Functions: https://aka.ms/python-webapps-actions
 
-name: Build and deploy Python project to Azure Function App - VyuhaFunctionApp
+name: VyuhaFunctionApp
 
 on:
   push:
@@ -71,9 +71,8 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_370F5A31BE90444E9C4BBF875A3E594D }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_889A23DF77FE46CE95CE551B13A7076E }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_C4372689FEB64CAF92D31628B77CFEBA }}
+          publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
+
 
       - name: 'Deploy to Azure Functions'
         uses: Azure/functions-action@v1
